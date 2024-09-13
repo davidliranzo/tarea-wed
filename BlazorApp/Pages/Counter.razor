@@ -1,0 +1,43 @@
+﻿@page "/counter"
+<h1>Predicción de Género</h1>
+
+<div>
+    <label for="nombre">Ingrese un nombre:</label>
+    <input type="text" id="nombre" @bind="nombre" />
+    <button @onclick="ObtenerGenero">Predecir Género</button>
+</div>
+
+@if (!string.IsNullOrEmpty(resultado))
+{
+    <p>El género de @nombre es: @resultado</p>
+}
+
+@code {
+    private string nombre;
+    private string resultado;
+
+    private async Task ObtenerGenero()
+    {
+        if (!string.IsNullOrWhiteSpace(nombre))
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var apiUrl = $"https://api.genderize.io/?name={nombre}";
+                var response = await httpClient.GetStringAsync(apiUrl);
+                var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GenderizeResponse>(response);
+                resultado = data.gender;
+            }
+        }
+        else
+        {
+            resultado = "Por favor, ingrese un nombre válido.";
+        }
+    }
+
+    private class GenderizeResponse
+    {
+        public string name { get; set; }
+        public string gender { get; set; }
+    }
+}
+

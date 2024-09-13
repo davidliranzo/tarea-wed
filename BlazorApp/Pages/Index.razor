@@ -1,0 +1,62 @@
+﻿@page "/"
+
+<h1>Calculadora</h1>
+
+<div>
+    <input type="number" @bind="numero1" />
+    <select @bind="operacion">
+        <option value="+">Suma</option>
+        <option value="-">Resta</option>
+        <option value="*">Multiplicación</option>
+        <option value="/">División</option>
+    </select>
+    <input type="number" @bind="numero2" />
+    <button @onclick="RealizarOperacion">Calcular</button>
+</div>
+
+@if (resultado.HasValue)
+{
+    <p>El resultado es: @resultado</p>
+}
+
+@code {
+    double? numero1;
+    double? numero2;
+    string operacion = "+";
+    double? resultado;
+
+    void RealizarOperacion()
+    {
+        if (numero1.HasValue && numero2.HasValue)
+        {
+            switch (operacion)
+            {
+                case "+":
+                    resultado = numero1 + numero2;
+                    break;
+                case "-":
+                    resultado = numero1 - numero2;
+                    break;
+                case "*":
+                    resultado = numero1 * numero2;
+                    break;
+                case "/":
+                    if (numero2 != 0)
+                    {
+                        resultado = numero1 / numero2;
+                    }
+                    else
+                    {
+                        resultado = null;
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            resultado = null;
+        }
+    }
+}
+
+

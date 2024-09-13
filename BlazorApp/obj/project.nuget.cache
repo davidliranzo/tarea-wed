@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "O3j8p6wjFTKETgXdJZcBlLzYfahYxrLY87L5NQWcCoXBCJt0b+BYapn2eCTeVSacq1LSZq3cNSlANvHZFb5fnQ==",
+  "success": true,
+  "projectFilePath": "c:\\Fundamentos\\t8\\BlazorApp\\BlazorApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Eduardo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

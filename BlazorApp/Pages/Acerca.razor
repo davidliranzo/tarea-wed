@@ -1,0 +1,18 @@
+@page "/acerca"
+
+<h1>Acerca de</h1>
+
+<div class="perfil">
+    <h2>@nombre @apellido</h2>
+    <p><strong>Correo:</strong> @Correo</p>
+    <p><strong>Telefono:</strong> @Telefono</p>
+    <p><strong>Descripción de a qué te gustaría dedicarte al terminar en el ITLA:</strong> @experiencia</p>
+</div>
+
+@code {
+    private string nombre = "David";
+    private string apellido = "Liranzo";
+    private string Correo = "Davidliranzo0@gmail.com";
+    private string Telefono = "https://wa.me/18494321520";
+    private string experiencia = "Dessarrollador wed";
+}
